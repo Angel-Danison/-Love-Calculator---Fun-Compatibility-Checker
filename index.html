@@ -1,0 +1,158 @@
+
+<html>
+    <title>Love Calculator ❤️</title>
+    <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+            body {
+                text-align: center;
+                font-family: Arial, sans-serif;
+                background: linear-gradient(to right, #ff758c, #ff7eb3);
+            }
+
+            .box {
+                font-family: 'Lobster', cursive;
+                text-shadow: 3px 3px 5px #232931;
+                margin: auto;
+                text-align: center;
+                background: linear-gradient(to right, #ff416c, #ff4b2b);
+                height: auto;
+                width: 50%;
+                font-size: large;
+                padding: 20px;
+                border-radius: 20px;
+                border: 5px solid red;
+                color: white;
+                box-shadow: 5px 5px 15px indigo;
+            }
+
+            input {
+                display: block;
+                width: 80%;
+                margin: 10px auto;
+                padding: 10px;
+                border-radius: 10px;
+                border: 2px solid white;
+                outline: none;
+                transition: 0.3s;
+            }
+
+            input:focus {
+                border-color: yellow;
+            }
+
+            .gender-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .gender {
+                padding: 10px;
+                background-color: palevioletred;
+                border-radius: 10px;
+                border: 1px solid whitesmoke;
+                cursor: pointer;
+            }
+
+            .gender.selected {
+                background-color: white;
+                color: palevioletred;
+            }
+
+            .btn {
+                margin-top: 20px;
+                padding: 10px 20px;
+                font-size: 18px;
+                font-family: 'Lobster', cursive;
+                background: rgb(184, 17, 73);
+                color: white;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .btn:hover {
+                background: #ff416c;
+            }
+
+            #result {
+                font-weight: bold;
+                margin-top: 20px;
+                text-align: center;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <h1>Find Your Perfect Match ❤️</h1>
+
+            <h2>Your Name</h2>
+            <input type="text" id="partner1" placeholder="Your name">
+            
+            <div class="gender-buttons">
+                <button class="gender" onclick="selectGender('male', 'user')">Male</button>
+                <button class="gender" onclick="selectGender('female', 'user')">Female</button>
+            </div>
+
+            <h2>Your Partner's Name</h2>
+            <input type="text" id="partner2" placeholder="Partner's name">
+            
+            <div class="gender-buttons">
+                <button class="gender" onclick="selectGender('male', 'partner')">Male</button>
+                <button class="gender" onclick="selectGender('female', 'partner')">Female</button>
+            </div>
+
+            <button class="btn" onclick="loveCal()">Calculate Love 💘</button>
+        </div>
+
+        <p id="result"></p>
+
+        <script>
+            let userGender = "";
+            let partnerGender = "";
+
+            function selectGender(gender, type) {
+                if (type === "user") {
+                    userGender = gender;
+                } else {
+                    partnerGender = gender;
+                }
+
+                const buttons = document.querySelectorAll(`.gender-buttons:nth-of-type(${type === "user" ? 1 : 2}) .gender`);
+                buttons.forEach(btn => btn.classList.remove("selected"));
+                event.target.classList.add("selected");
+            }
+
+            function loveCal() {
+                var partner1 = document.getElementById("partner1").value.trim();
+                var partner2 = document.getElementById("partner2").value.trim();
+
+                if (partner1 === "" || partner2 === "") {
+                    alert("Please enter both names!");
+                    return;
+                }
+
+                var LoveScore = Math.floor(Math.random() * 100) + 1;
+                let message = "";
+
+                if (LoveScore > 70) {
+                    message = "❤️ YOU GUYS ARE SO IN LOVE";
+                } else if (LoveScore >= 30 && LoveScore <= 70) {
+                    message = "💔 OOPS, SORRY! THEY MAY NOT LIKE YOU BACK";
+                } else if (LoveScore > 20) {
+                    message = "😢 MAYBE FRIENDS ZONE";
+                } else {
+                    message = "🚨 NO HOPE! MOVE ON";
+                }
+
+                document.getElementById("result").innerHTML = `❤️ Love Score: ${LoveScore}%<br>${message}`;
+            }
+        </script>
+    </body>
+</html>
+
+

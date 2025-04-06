@@ -1,0 +1,30 @@
+
+.feature-icon {
+width: 4rem;
+height: 4rem;
+border-radius: .75rem;
+
+}
+.container{
+background-color: blue;
+display: flex;
+        flex-direction: column;
+        padding-left: 5O%;
+        background: linear-gradient( to right,violet,blue);
+        background-size:400% 400%;
+        box-shadow: 2px 2px 5px black;
+        animation: rainbow 6s infinite linear;
+        .container {
+        width: 100%; /* Makes it responsive */
+         max-width: 1500px; /* Limits maximum width */
+}
+
+} @keyframes rainbow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+}
+.container1{
+
+
+}
